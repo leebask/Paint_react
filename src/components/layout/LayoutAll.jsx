@@ -32,6 +32,7 @@ function LayoutAll() {
       <Layout style={{}} >
         {/* <Sider>Sider</Sider>  */}
 
+
         <Content>
           {chooseButton == 1
             ? <Start />
