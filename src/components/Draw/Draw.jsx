@@ -60,6 +60,7 @@ export const Draw = () => {
             />
           ))}
         </Layer>
+        
       </Stage>
       <select
         value={tool}
