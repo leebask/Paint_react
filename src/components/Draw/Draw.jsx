@@ -60,7 +60,6 @@ export const Draw = () => {
             />
           ))}
         </Layer>
-        
       </Stage>
       <select
         value={tool}
@@ -71,7 +70,7 @@ export const Draw = () => {
         <Option style={{fonSize: '40px'}} value="pen">Pen</Option>
         <Option value="eraser">Eraser</Option>
       </select>
-      
+
     </div>
   );
 };
