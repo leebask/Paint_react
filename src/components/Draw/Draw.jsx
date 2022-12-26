@@ -1,3 +1,4 @@
+import { Select } from 'antd';
 import { Option } from 'antd/es/mentions';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
@@ -35,7 +36,16 @@ export const Draw = () => {
   };
 
   return (
-    <div>
+    <div style={{ marginTop: '10px' }}>
+      <Select
+        value={tool}
+        onChange={(e) => {
+          setTool(e)
+        }}
+      >
+        <Select.Option value="pen">Bút</Select.Option>
+        <Select.Option value="eraser">Tẩy</Select.Option>
+      </Select>
       <Stage
         width={window.innerWidth}
         height={window.innerHeight}
@@ -44,9 +54,10 @@ export const Draw = () => {
         onMouseup={handleMouseUp}
       >
         <Layer>
-          <Text text="Just start drawing" x={5} y={30} />
+          <Text text="Vẽ bên dưới" x={5} y={30} />
           {lines.map((line, i) => (
             <Line
+
               key={i}
               points={line.points}
               stroke="#df4b26"
@@ -61,15 +72,7 @@ export const Draw = () => {
           ))}
         </Layer>
       </Stage>
-      <select
-        value={tool}
-        onChange={(e) => {
-          setTool(e.target.value);
-        }}
-      >
-        <Option style={{fonSize: '40px'}} value="pen">Pen</Option>
-        <Option value="eraser">Eraser</Option>
-      </select>
+
 
     </div>
   );

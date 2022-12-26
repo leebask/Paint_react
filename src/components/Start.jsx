@@ -1,8 +1,9 @@
+import { Tooltip } from 'antd';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { Stage, Layer, Star, Text } from 'react-konva';
+import { Stage, Layer, Star, Text, } from 'react-konva';
 
- function generateShapes() {
+function generateShapes() {
   return [...Array(10)].map((_, i) => ({
     id: i.toString(),
     x: Math.random() * window.innerWidth,
@@ -11,7 +12,6 @@ import { Stage, Layer, Star, Text } from 'react-konva';
     isDragging: false,
   }));
 }
-
 const INITIAL_STATE = generateShapes();
 
 export const Start = () => {
@@ -38,12 +38,18 @@ export const Start = () => {
       })
     );
   };
+  const text = <span>prompt text</span>;
 
   return (
-    <Stage width={window.innerWidth} height={window.innerHeight}>
+    <Stage width={window.innerWidth} height={window.innerHeight} style={{marginTop:'10px'}}> 
+      {/* <div>aaa</div> */}
       <Layer>
-        <Text text="Try to drag a star" />
+        {/* <Tooltip placement="topLeft" title={text}> */}
+        <Text text="Kéo thử ngôi sao" />
+        {/* </Tooltip> */}
+
         {stars.map((star) => (
+
           <Star
             key={star.id}
             id={star.id}
@@ -65,7 +71,11 @@ export const Start = () => {
             scaleY={star.isDragging ? 1.2 : 1}
             onDragStart={handleDragStart}
             onDragEnd={handleDragEnd}
+            onMouseEnter={(e) => console.log(e)}
+            onMouseLeave={() => console.log('khanh')}
+
           />
+
         ))}
       </Layer>
     </Stage>

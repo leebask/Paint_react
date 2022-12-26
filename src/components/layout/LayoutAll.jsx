@@ -8,16 +8,15 @@ import { Start } from '../Start'
 function LayoutAll() {
   const [chooseButton, setChooseButton] = useState(0)
   const [size, setSize] = useState('small');
+  
   return (
     <Layout>
       <div style={{ width: '100%', height: '100px', backgroundColor: 'yellow' }}>
-
-
         <Header style={{ backgroundColor: 'yellow' }}>
           <Space size={size}>
             <Button
               onClick={() => setChooseButton(1)}
-              style={(chooseButton == 1) ? { borderColor: 'red', backgroundColor: '#FFCC99' } : {}}
+              style={(chooseButton === 1) ? { borderColor: 'red', backgroundColor: '#FFCC99' } : {}}
             >Ngôi sao
             </Button>
             <Button
