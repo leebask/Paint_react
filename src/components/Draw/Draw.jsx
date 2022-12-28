@@ -2,9 +2,10 @@ import { Select } from 'antd';
 import { Option } from 'antd/es/mentions';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+import { Helmet } from 'react-helmet';
 import { Stage, Layer, Line, Text } from 'react-konva';
 
-export const Draw = () => {
+function Draw () {
   const [tool, setTool] = React.useState('pen');
   const [lines, setLines] = React.useState([]);
   const isDrawing = React.useRef(false);
@@ -37,6 +38,10 @@ export const Draw = () => {
 
   return (
     <div style={{ marginTop: '10px' }}>
+       <Helmet>
+        <meta charSet="utf-8" />
+        <title>Vẽ tay</title>
+      </Helmet>
       <Select
         value={tool}
         onChange={(e) => {
@@ -77,4 +82,5 @@ export const Draw = () => {
     </div>
   );
 };
+export default Draw
 
