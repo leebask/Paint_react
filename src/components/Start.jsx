@@ -3,6 +3,7 @@ import React, { useEffect, useLayoutEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Stage, Layer, Star, Text, } from 'react-konva';
 import { Helmet } from "react-helmet";
+let b =1 
 
 function useConsoleLog(stars) {
   useEffect(() => {
@@ -62,8 +63,8 @@ function Start() {
   //   }
   // }, [stars])
 
-
   const a = useConsoleLog(stars)
+  
 
 
   return (
