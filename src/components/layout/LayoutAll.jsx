@@ -6,10 +6,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setOption } from '../../app/todoSlice'
 import Add from '../Add/Add'
 import QRCode from '../QRcode/QRCodePage'
+import 'react-toastify/dist/ReactToastify.css';
 const Start = lazy(() => import('../Start'))
 const Draw = lazy(() => import('../Draw/Draw'));
 
 import {FacebookOutlined } from '@ant-design/icons';
+import { ToastContainer } from 'react-toastify'
 
 
 function LayoutAll() {
@@ -22,7 +24,8 @@ function LayoutAll() {
     dispatch(setOption(value))
   }
   return (
-    <Layout>
+    <>
+     <Layout>
       <div style={{ width: '100%', height: '100px', backgroundColor: 'yellow' }}>
         <Header style={{ backgroundColor: 'yellow' }}>
           <Space size={size}>
@@ -86,6 +89,10 @@ function LayoutAll() {
       
       </Footer>
     </Layout>
+    <ToastContainer />
+
+    </>
+   
   )
 }
 
