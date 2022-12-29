@@ -3,6 +3,7 @@ import { MinusOutlined, PlusOutlined, CheckOutlined } from '@ant-design/icons';
 import { QRCode, Button, Input, Space } from 'antd';
 import khanhicon from './khanh.jpg'
 import { Helmet } from 'react-helmet';
+import { toast } from 'react-toastify';
 function QRCodePage() {
     const [size, setSize] = useState(160);
     const [typeInput, setTypeInput] = useState('');
@@ -37,10 +38,19 @@ function QRCodePage() {
                 style={{
                     marginBottom: 16,
                     gap: 5,
+                    display:'flex',
+                    flexDirection: 'column'
                 }}
             >
-                <Input style={{ width: '300px' }} placeholder="Nhập thông tin cần chuyển" onChange={(e) => setTypeInput(e.target.value)} />
-                <Button type='primary' onClick={(e) => setUrl(typeInput)} icon={<CheckOutlined />} >
+                <Input style={{ width: '300px' }} placeholder="Nhập thông tin cần chuyển QR" onChange={(e) => setTypeInput(e.target.value)} />
+                <Button type='primary'
+                    onClick={(e) => {
+                        setUrl(typeInput)
+                        toast.success('Tạo thành công!')
+                    }
+
+                    }
+                    icon={<CheckOutlined />} >
                     Tạo QRCode
                 </Button>
                 <Button onClick={decline} disabled={size <= 48} icon={<MinusOutlined />}>
