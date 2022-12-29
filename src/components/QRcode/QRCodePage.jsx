@@ -37,6 +37,8 @@ function QRCodePage() {
                 style={{
                     marginBottom: 16,
                     gap: 5,
+                    display:'flex',
+                    flexDirection: 'column',
                 }}
             >
                 <Input style={{ width: '300px' }} placeholder="Nhập thông tin cần chuyển" onChange={(e) => setTypeInput(e.target.value)} />
