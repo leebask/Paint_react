@@ -5,8 +5,12 @@ import React, { lazy, Suspense, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setOption } from '../../app/todoSlice'
 import Add from '../Add/Add'
+import QRCode from '../QRcode/QRCodePage'
 const Start = lazy(() => import('../Start'))
 const Draw = lazy(() => import('../Draw/Draw'));
+
+import {FacebookOutlined } from '@ant-design/icons';
+
 
 function LayoutAll() {
   const [size, setSize] = useState('small');
@@ -37,7 +41,13 @@ function LayoutAll() {
               onClick={() => setOptionRedux(3)}
               style={(option === 3) ? { borderColor: 'red', backgroundColor: '#FFCC99' } : {}}
             >
-              Cộng
+              Sự thật về mèo
+            </Button>
+            <Button
+              onClick={() => setOptionRedux(4)}
+              style={(option === 4) ? { borderColor: 'red', backgroundColor: '#FFCC99' } : {}}
+            >
+              QR Code
             </Button>
           </Space>
         </Header>
@@ -58,15 +68,23 @@ function LayoutAll() {
               <Suspense fallback={<div>Loading...</div>}>
                 <Draw />
               </Suspense>
-              :
+              :option === 3
+              ?
               <Add />
+              :
+              <QRCode/>
 
           }
 
         </Content>
       </Layout>
 
-      <Footer>Footer</Footer>
+      <Footer style={{display: 'flex',justifyContent:'center'}}>
+        <a  href='https://www.facebook.com/Leebask.KP/' >
+        <FacebookOutlined   style={{ fontSize: '28px'}}/>
+        </a>
+      
+      </Footer>
     </Layout>
   )
 }

@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState =
 {
-    option: 0
+    option: 4
 }
 
 
