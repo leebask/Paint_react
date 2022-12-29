@@ -45,8 +45,13 @@ function QRCodePage() {
                 <Input style={{ width: '300px' }} placeholder="Nhập thông tin cần chuyển QR" onChange={(e) => setTypeInput(e.target.value)} />
                 <Button type='primary'
                     onClick={(e) => {
-                        setUrl(typeInput)
-                        toast.success('Tạo thành công!')
+                        if(typeInput.length>0){
+                            setUrl(typeInput)
+                            toast.success('Tạo thành công!')
+                        }
+                        else {
+                            toast.warning('Vui lòng điền thông tin!')
+                        }
                     }
 
                     }
