@@ -1,7 +1,12 @@
+* {
+    outline: none;
+    overflow: hidden !important;    
+
+  }
 :root {
     overflow-x: hidden !important;
     overflow-y: hidden !important;
-    /* overflow: hidden !important;     */
+    overflow: hidden !important;    
 
 }
 body {
