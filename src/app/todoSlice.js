@@ -1,11 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
-const initialState =
-{
+const initialState = {
     option: 4
-}
-
-
+};
 
 const todoSlice = createSlice({
     name: 'todos',
@@ -15,10 +12,10 @@ const todoSlice = createSlice({
             state.push(action.payload);
         },
         removePost(state, action) {
-            state.splice(action.payload, 1)
+            state.splice(action.payload, 1);
         },
         setOption(state, action) {
-            state.option = action.payload
+            state.option = action.payload;
         }
     }
 });

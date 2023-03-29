@@ -5,7 +5,7 @@ import { createRoot } from 'react-dom/client';
 import { Helmet } from 'react-helmet';
 import { Stage, Layer, Line, Text } from 'react-konva';
 
-function Draw () {
+function Draw() {
   const [tool, setTool] = React.useState('pen');
   const [lines, setLines] = React.useState([]);
   const isDrawing = React.useRef(false);
@@ -38,16 +38,15 @@ function Draw () {
 
   return (
     <div style={{ marginTop: '10px' }}>
-       <Helmet>
+      <Helmet>
         <meta charSet="utf-8" />
         <title>Vẽ tay</title>
       </Helmet>
       <Select
         value={tool}
         onChange={(e) => {
-          setTool(e)
-        }}
-      >
+          setTool(e);
+        }}>
         <Select.Option value="pen">Bút</Select.Option>
         <Select.Option value="eraser">Tẩy</Select.Option>
       </Select>
@@ -57,12 +56,14 @@ function Draw () {
         onMouseDown={handleMouseDown}
         onMousemove={handleMouseMove}
         onMouseup={handleMouseUp}
-      >
+        onTouchStart={handleMouseDown}
+        onTouchEnd={handleMouseUp}
+        onTouchMove={handleMouseMove}
+        >
         <Layer>
           <Text text="Vẽ bên dưới" x={5} y={30} />
           {lines.map((line, i) => (
             <Line
-
               key={i}
               points={line.points}
               stroke="#df4b26"
@@ -70,17 +71,12 @@ function Draw () {
               tension={0.5}
               lineCap="round"
               lineJoin="round"
-              globalCompositeOperation={
-                line.tool === 'eraser' ? 'destination-out' : 'source-over'
-              }
+              globalCompositeOperation={line.tool === 'eraser' ? 'destination-out' : 'source-over'}
             />
           ))}
         </Layer>
       </Stage>
-
-
     </div>
   );
-};
-export default Draw
-
+}
+export default Draw;
