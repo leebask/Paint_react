@@ -4,6 +4,7 @@ import Sider from 'antd/es/layout/Sider';
 import React, { lazy, Suspense, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setOption } from '../../app/todoSlice';
+import './layout.css';
 import Add from '../Add/Add';
 import QRCode from '../QRcode/QRCodePage';
 import 'react-toastify/dist/ReactToastify.css';
@@ -12,6 +13,7 @@ const Draw = lazy(() => import('../Draw/Draw'));
 
 import { FacebookOutlined } from '@ant-design/icons';
 import { ToastContainer } from 'react-toastify';
+import Rotate from '../ChildComponent/Rotate/Rotate';
 
 function LayoutAll() {
     const [size, setSize] = useState('small');
@@ -25,8 +27,16 @@ function LayoutAll() {
     return (
         <>
             <Layout>
-                <Header style={{ backgroundColor: 'yellow', display: 'flex', flexWrap: 'wrap', height: 'fit-content' }}>
-                    <Space size={size} style={{ height: 'fit-content',flexWrap: 'wrap'}}>
+                <Header
+                    style={{
+                        backgroundColor: '#f9ca24',
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        height: 'fit-content',
+                        paddingTop: '8px',
+                        justifyContent: 'space-between'
+                    }}>
+                    <Space size={size} style={{ height: 'fit-content', flexWrap: 'wrap' }}>
                         <Button
                             onClick={() => setOptionRedux(1)}
                             style={option === 1 ? { borderColor: 'red', backgroundColor: '#FFCC99' } : {}}>
@@ -48,6 +58,7 @@ function LayoutAll() {
                             QR Code
                         </Button>
                     </Space>
+                    <Rotate/>
                 </Header>
                 <Layout style={{}}>
                     {/* <Sider>Sider</Sider>  */}
@@ -69,10 +80,14 @@ function LayoutAll() {
                     </Content>
                 </Layout>
 
-                <Footer style={{ display: 'flex', justifyContent: 'center' }}>
-                    <a href="https://www.facebook.com/Leebask.KP/">
-                        <FacebookOutlined style={{ fontSize: '28px' }} />
-                    </a>
+                <Footer style={{ display: 'flex', justifyContent: 'center',marginTop:'36px' }}>
+                    <div className="footer">
+                        <a href="https://www.facebook.com/Leebask.KP/">
+                            <FacebookOutlined style={{ fontSize: '28px' }} />
+                        </a>
+                        <div class="loader"></div>
+                      
+                    </div>
                 </Footer>
             </Layout>
             <ToastContainer />

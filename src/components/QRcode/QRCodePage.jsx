@@ -6,7 +6,7 @@ import { Helmet } from 'react-helmet';
 import { toast } from 'react-toastify';
 import TextArea from 'antd/es/input/TextArea';
 function QRCodePage() {
-  const [size, setSize] = useState(160);
+  const [size, setSize] = useState(200);
   const [typeInput, setTypeInput] = useState('');
   const [url, setUrl] = useState('https://www.facebook.com/Leebask.KP/');
 
